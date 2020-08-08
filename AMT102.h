@@ -1,19 +1,19 @@
 /* 
  * AMT102.h
  * 
- * Version: 1.00
+ * Version: 1.01
  * Created: 2020/1/25
  * Author : Yuki Yoshida
  */
 
-#ifndef AMT102_H
-#define AMT102_H
+#pragma once
 
 #include <Arduino.h>
 
 class AMT102 {
 public:
   AMT102(uint8_t dipSwitch, int aInterruptNumber, int bInterruptNumber);
+  ~AMT102() = default;
 
   void setup();
 
@@ -42,5 +42,3 @@ inline void AMT102::printError(const char *errorText) {
   Serial.println("from AMT102 class");
   Serial.println(errorText);
 }
-
-#endif

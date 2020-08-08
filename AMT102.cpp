@@ -1,7 +1,7 @@
 /* 
  * AMT102.cpp
  * 
- * Version: 1.00
+ * Version: 1.01
  * Created: 2020/1/25
  * Author : Yuki Yoshida
  */
