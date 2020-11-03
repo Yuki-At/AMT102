@@ -1,7 +1,7 @@
 /* 
  * AMT102.cpp
  * 
- * Version: 1.01
+ * Version: 1.10
  * Created: 2020/1/25
  * Author : Yuki Yoshida
  */
@@ -93,6 +93,7 @@ void AMT102::interruptMethod() {
 int AMT102::getState() {
   bool a = false, b = false;
 
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
   switch (aInterruptNumber) {
     case 2: a = (PIND & (1 << PIND0)); break;
     case 3: a = (PIND & (1 << PIND1)); break;
@@ -113,6 +114,20 @@ int AMT102::getState() {
     default:
       printError("Not found b intterrupt pin");
   }
+#elif defined(__AVR_ATmega328P__)
+  switch (aInterruptNumber) {
+    case 0: a = (PIND & (1 << PIND2)); break;
+    case 1: a = (PIND & (1 << PIND3)); break;
+    default:
+      printError("Not found b intterrupt pin");
+  }
+  switch (bInterruptNumber) {
+    case 0: b = (PIND & (1 << PIND2)); break;
+    case 1: b = (PIND & (1 << PIND3)); break;
+    default:
+      printError("Not found b intterrupt pin");
+  }
+#endif
 
   if (a) {
     // a: high, b: high

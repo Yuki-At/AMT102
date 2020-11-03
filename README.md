@@ -68,6 +68,13 @@ void loop() {
 
 ---
 
-Version: 1.00  
+## 更新履歴
+
+### ver.1.10
+- Arduino Mega しか対応していなかったが、Arduino Uno, Arduno Nano も対応。
+
+---
+
+Version: 1.10  
 Created: 2020/1/26  
 Author: Yuki Yoshida
